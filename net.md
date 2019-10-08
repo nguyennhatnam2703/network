@@ -29,7 +29,7 @@ các phương diện cho người dùng để truy cập vào mạng.
 
 ![image](https://www.totolink.vn/public/uploads/img_article/mohinhosilagichucnangcuacactanggiaothuctrongmohinhosipresentationlayer.png)
 
-###2.1:Chức năng 
+### 2.1:Chức năng 
 
 +Dịch các mã ký tự từ ASCII sang EBCDIC.
 
@@ -102,7 +102,7 @@ Một số ứng dụng:game online,livestream,...
 
 +internet protocol version 6(Ipv6)
 
-###*6.Tầng Datalink*
+### *6.Tầng Datalink*
 
 ![image](https://www.totolink.vn/public/uploads/img_article/mohinhosilagichucnangcuacactanggiaothuctrongmohinhosidatalinklayer.png)
 
