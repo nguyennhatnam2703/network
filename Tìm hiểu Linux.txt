@@ -1,0 +1,59 @@
+
+#T?m hi?u v? l?ch s? h?nh thành,phát tri?n c?a Linux.
+
+#M?c l?c
+
+[1. Ngu?n g?c ra ð?i](#1)
+
+[2. Quá tr?nh phát tri?n](#2)
+
+[3. Các lo?i nhân h? ði?u hành](#3)
+
+[3.1:Kernel là g?](#3.1)
+
+[3.2:Microkernel](#3.2)
+
+[3.3:Monolithic kernel](#3.3)
+
+[3.4:Hybrid Kernel](#3.4) 
+
+
+
+[<a name="1"><a>
+# 1. Ngu?n g?c c?a LINUX.
+
+Linux ra ð?i nãm 1991 ðý?c vi?t b?i Torvalds. H? ði?u hành MINIX chính là ngu?n c?m h?ng cho Torvalds vi?t LINUX.Nói v? MINIX th? MINIX là h? ði?u hành ki?u UNIX ðý?c thi?t k? b?i giáo sý Andrew S.Tanenbaum v?i m?c ðích giáo d?c.
+
+Ban ð?u Linux kernel ðý?c phát tri?n trên môi trý?ng MINIX.Sau ðó khi LINUX ð? trý?ng thành  th? vi?c phát tri?n Linux di?n ra ngay trên h? th?ng Linux.Các ?ng d?ng GNU thay th? d?n các thành ph?n c?a MINIX.
+
+<a name="2"></a>
+# 2.Quá tr?nh phát tri?n
+
+-  Tháng 4/1991,Linus Torvalds b?t tay vào vi?c vi?t nh?ng d?ng l?nh ð?u tiên c?a Linux.
+- Tháng 8/1991,Torvalds g?i ði thông ði?p v? s? ra ð?i c?a Linux.
+-  Tháng 9/1991,phiên b?n Linux 0.01 ,phiên b?n ð?u tiên ðý?c Torvalds công b?
+- Tháng 10,phiên b?n Linux 0.02 ðý?c công b?
+- Nãm 1992, Torvalds phát hành Linux dý?i d?ng m? ngu?n m? c?a gi?y phép GPL cho phép t?t c? m?i ngý?i có quy?n dowload v? ð? m? ngu?n ð? cùng phát tri?n.
+- Nãm 1993,Slackware là h? ði?u hành ð?u tiên phát tri?n d?a trên m? ngu?n Linux ra ð?i.
+- Ngày 14/3/1994,ra m?t phiên b?n Linux 1.0 v?i 176.250 d?ng l?nh.
+- Ngày 3/11/1994,Red hat Linux phiên b?n 1.0 ðý?c ra m?t.Ðây là m?t trong nh?ng h? ði?u hành ðý?c thýõng m?i hóa ð?u tiên d?a trên Linux.
+- Nãm 1995,ra m?t phiên b?n Linux 1.2 v?i 319.950 d?ng l?nh.
+- Nãm 1996, h?nh ?nh chim cánh c?t ðý?c ch?n ð? làm bi?u tý?ng chính th?c c?a Linux.
+
+![image](https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/800px-Tux.svg.png)
+
+- Nãm 1998, Linux b?t ð?u ðý?c các t?p ðoàn công ngh? quan tâm và ð?u tý ð? phái tri?n nhý IBM,Orcale,Compaq.
+
+-Nãm 2004,phát hành hai phiên b?n Ubuntu, Centos.
+
+-Nãm 2007,các h?ng s?n xu?t máy tính nhý Hp,ASUS,Dell,..b?t ð?u bán ra các s?n ph?m laptop ðý?c cài ð?t s?n Linux.
+
+-Hi?m nay Linux ðý?c sý d?ng r?ng r?i trên toàn th? gi?i,trên các máy tính các nhân,các máy ch?,thi?t b? di ð?ng,....
+
+# 3.Các lo?i nhân h? ði?u hành
+
+## 3.1.Kernel là g?? 
+
+Kernel là thành ph?n c?t l?i c?a m?t h? ði?u hành.Nó ho?t ð?ng nhý m?t c?u n?i gi?u các ?ng d?ng và x? lí d? li?u ðý?c th?c hi?n ? c?p ð? ph?n c?ng. Kernel có vài tr? cung c?p và qu?n lí tài nguyên máy tính,cho phép các chýõng tr?nh khác ch?y và s? d?ng tài nguyên này.Ngoài ra Kernel c?n có vai tr? thi?t l?p không gian ð?a ch? cho b? nh? cho các ?ng d?ng,t?i các t?p có m? ?ng d?ng vào b? nh?.
+
+## 3.2.Microkernel
