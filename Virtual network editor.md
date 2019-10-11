@@ -1,135 +1,45 @@
-﻿## **Mô hình OSI**
+## **Tìm hiểu về Virtual Network Editor trong VMware Workstation**
 
-![image](https://www.totolink.vn/public/uploads/img_article/mohinhosilagichucnangcuacactanggiaothuctrongmohinhosi.png)
-## **I:Chức năng các tầng:**
-
-### *1.Application*
-![image](https://www.totolink.vn/public/uploads/img_article/mohinhosilagichucnangcuacactanggiaothuctrongmohinhosipresentationlayer.png)
-### 1.1:Chức năng
-
-Tầng Application có chức năng cung cấp giao diện để người dùng và 
- chương trình ứng dụng tương tác với nhau.Các giao thức cung cấp
-các phương diện cho người dùng để truy cập vào mạng. 
-
-### 1.2:Một số dịch vụ và giao thức trong tầng Application
-
-+ DNS
-
-+ SMTP
-
-+ HTTP
-
-+ FTP
-
-+ Telnet
-
-+ SSH
+VMware Workstation là phần mềm ảo hóa phiên bản dùng cho người dùng PC, để có thể sử dụng phần mềm này  hiệu quả, một yếu tố rất quan trọng là chúng ta cần phải hiểu về các kết nối mạng, cách thiết lập và cài đặt hệ thống mạng ảo trong phần mềm. ﻿
+ ## 1.Giới thiệu VMware Workstation
  
-### *2.Presentation*
+ - VMware Workstation là phần mềm ảo hóa phiên bản dùng cho người dùng PC, để có thể sử dụng phần mềm này  hiệu quả, một yếu tố rất quan     trọng là chúng ta cần phải hiểu về các kết nối mạng, cách thiết lập và cài đặt hệ thống mạng ảo trong phần mềm. 
+ - Các thành phần hình thành nên mạng ảo trong VMware gồm switch ảo, card mạng ảo, DHCP server ảo và thiết bị NAT
+ 
+ ## 2.Switch ảo
+ 
+ - Switch ảo có vài trò kết nối các thành phần mạng ảo với nhau.
+ - Chúng có tên là VMnet0,VMnet2,VMnet3,....
+ - Một số switch ảo được gắn vào mạng một cách mặc định. Mặc định khi ta cài Wmware thì có sẵn 3 Switch ảo như sau: VMnet0 chế độ Bridged (cầu nối), VMnet8 chế độ NAT và VMnet1 chế độ Host-only.
+ - VMware Workstation (phiên bản 12) cho phép tạo 20 switch ảo trên Windows và 255 cái trên Linux.
+ - Trên mỗi Switch ảo trên Windows thì các kết nối của các máy tính ảo (host) vào mỗi Switch ảo là không giới hạn, còn trên Linux thì 32      máy ảo.
+ 
+ ## 3.Card mang trên máy ảo.
+ 
+ -Khi bạn tạo một máy ảo mới, card mạng được tạo ra cho máy ảo, những card mạng này hiển thị trên hệ điều hành máy ảo với tên thiết bị như là AMD PCNET PCI hay Intel Pro/1000 MT Server Adapter. 
+ 
+ ![](../image/i2.png)
+ 
+ ## 4.DHCP server ảo
+ 
+ -DHCP (Dynamic Host Configuration) server ảo đảm nhiệm việc cung cấp địa chỉ IP cho các máy ảo trong việc kết nối máy ảo vào các Switch   ảo không có tính năng Bridged (VMnet0). 
+ - DHCP  server ảo cấp phát địa chỉ IP cho các máy ảo có kết nối với VMnet Host-only và NAT.
+ 
+ ![](https://public.bn.files.1drv.com/y4peG36U7NACYoQN4xNa8kzMrs8IddLfNfvz2UdSTJHHBVKTU6BKRxxPVSnC7Cnt7UDzHkpZl9UvMhrWB8MaIHD6TBOg8RN2pLx4VHjEWiBB5Ded_l0xtyg8fS79vVg2zNvM0ANMy-VYTPy3ZiWx1c_52xtzenIt-8Jo2eg2vG0wIkfsj028wsldL02rRoEvXBT/dhcp.png?psid=1&rdrts=245380895)
+ 
+ 
+ 
+ ![](https://www.engisv.info/wp-content/uploads/2013/08/dhcp.png)
+ 
+ 
+ 
 
-![image](https://www.totolink.vn/public/uploads/img_article/mohinhosilagichucnangcuacactanggiaothuctrongmohinhosipresentationlayer.png)
-
-### 2.1:Chức năng 
-
-+Dịch các mã ký tự từ ASCII sang EBCDIC.
-
-+chuyển đổi dữ liệu.
-
-+mã hóa và giải mã dữ liệu để đảm bảo bảo mật.
-
-+nén dữ liệu để giảm lượng dữ liệu truyền trên mạng
-
-### *3.Session*
-
-![image](https://www.totolink.vn/public/uploads/img_article/mohinhosilagichucnangcuacactanggiaothuctrongmohinhosisessionlayer.png)
-
-### Chức năng
-
-Tầng Session cho phép các người sử dụng trên các máy tính khác nhau có thể thiết lập,duy trì,đồng bộ phiên truyền thông  trong quá trình truyền thông giữa họ với nhau.
-
-### *4.Transport*
-
-![image](https://www.totolink.vn/public/uploads/img_article/mohinhosilagichucnangcuacactanggiaothuctrongmohinhositransportlayer.png)
-
-#### 4.1:Chức năng chính
-
-+theo dõi ứng dụng nguồn và đích
-
-+phân đoạn dữ liệu,quản lí mỗi đoạn,hợp thành nguồn và đích.
-
-+xác định đúng từng loại ứng dụng trong mỗi phiên truyền thông
-	
-#### 4.2:Các giao thức phổ biến
-
-#### 4.2.1: Giao thức TCP
-
-+TCP là truyền thông hướng kết nối,tạo phiên kết nối đến khi truyền
-
-+truyền thông tin cậy đảm bảo dữ liệu bị mất sẽ được truyền lại
-
-+sắp xếp dữ liệu khi truyền
-
-+theo dõi từng phiên truyền thông
-
-Một số ứng dụng:HTTP,SMTP,POP3,.....
-
-
-#### 4.2.2:Giao thức UDP
-+UDP là truyền thông phi kết nối,không thiết lập kết nối khi truyền.
-
-+truyền thông không tin cậy
-
-+không sắp xếp lại cấu trúc khi truyền
-
-+không điều khiển luồng,không theo dõi phiên truyền thông
-
-Một số ứng dụng:game online,livestream,...
-
-
-### *5.Network*
-
-![image](https://www.totolink.vn/public/uploads/img_article/mohinhosilagichucnangcuacactanggiaothuctrongmohinhosinetworklayer.png)
-
-#### 5.1:Chức năng
-
-+chuyển đổi dữ liệu
-
-+định tuyến đường đi của gói tin
-
-#### 5.2:Giao thức chính:
-
-+internet protocol version 4(IPv4)
-
-+internet protocol version 6(Ipv6)
-
-### *6.Tầng Datalink*
-
-![image](https://www.totolink.vn/public/uploads/img_article/mohinhosilagichucnangcuacactanggiaothuctrongmohinhosidatalinklayer.png)
-
-#### 6.1:Chức năng:
-+liên kết dữ liêu với tầng trên
-
-+điều khiển Frame được đặt vào đường truyền và lấy ra đường truyền.
-
-### 6.2:Giao thức.
-+Logical link control(LLC):chịu trách nhiệm kiểm soát lỗi và kiểm soát luồng.
-
-+Media access control(MAC):chịu trách nhiệm quản lí quyền truy cập và quyền truyền dữ liệu.
-
-### *7.Tầng Physical*
-
-![image](https://www.totolink.vn/public/uploads/img_article/mohinhosilagichucnangcuacactanggiaothuctrongmohinhosiphysicallayer.png)
-
-#### Chức năng
-+thiết lập và ngắt mạch một liên kết truyền thông
-
-+biến đổi thể dạng của dữ liệu số trong thiết bị người dùng đồng bộ với tín hiệu được truyền qua đường truyền thông
 
 ## Tài liệu tham khảo
 
-[totolink](https://www.totolink.vn/article/136-mo-hinh-osi-la-gi-chuc-nang-cua-cac-tang-giao-thuc-trong-mo-hinh-osi.html)
+[1](https://virtualizationreview.com/articles/2011/06/30/virtual-network-editor-vmware-workstation.aspx)
 
-[blog](https://www.bmc.com/blogs/osi-model-7-layers/)
+[2](https://www.engisv.info/?p=134)
 
 
 
