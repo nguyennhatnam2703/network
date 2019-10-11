@@ -16,7 +16,7 @@
 
 - [5.LAN Segment](#5)
 
-- [6.Các cơ chế hoạt động khi cấu hình với switch ảo.](#6)
+- [6.Các chế độ hoạt động khi cấu hình với switch ảo.](#6)
 
 - [6.1:Bridge](#6.1)
 
@@ -46,7 +46,7 @@
  
  -Khi bạn tạo một máy ảo mới, card mạng được tạo ra cho máy ảo, những card mạng này hiển thị trên hệ điều hành máy ảo với tên thiết bị như là AMD PCNET PCI hay Intel Pro/1000 MT Server Adapter. 
  
- ![](../../image/i2.PNG)
+ ![](../image/i2.PNG)
  
   <a name="4"><a>
  ## 4.DHCP server ảo
