@@ -64,7 +64,7 @@
  ![](../image/lag/png)
  
   <a name="6"><a>
- ## 6.Các cơ chế hoạt động khi cấu hình với switch ảo.
+ ## 6.Các chế độ hoạt động khi cấu hình với switch ảo.
  
   <a name="6.1"><a>
  ## 6.1:Bridge
