@@ -97,9 +97,9 @@
 
 ## Tài liệu tham khảo
 
-[1](https://virtualizationreview.com/articles/2011/06/30/virtual-network-editor-vmware-workstation.aspx)
+[1] https://virtualizationreview.com/articles/2011/06/30/virtual-network-editor-vmware-workstation.aspx
 
-[2](https://www.engisv.info/?p=134)
+[2] https://www.engisv.info/?p=134
 
 
 
