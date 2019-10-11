@@ -14,15 +14,13 @@
 
 - [4.DHCP server ảo](#4)
 
-- [5.LAN Segment](#5)
+- [5.Các chế độ hoạt động khi cấu hình với switch ảo.](#5)
 
-- [6.Các chế độ hoạt động khi cấu hình với switch ảo.](#6)
+- [5.1:Bridge](#5.1)
 
-- [6.1:Bridge](#6.1)
+- [5.2:NAT](#5.2)
 
-- [6.2:NAT](#6.2)
-
-- [6.3:Host only](#6.3)
+- [5.3:Host only](#5.3)
 
  <a name="1"><a>
  ## 1.Giới thiệu VMware Workstation
@@ -42,7 +40,7 @@
  ![](https://www.engisv.info/wp-content/uploads/2013/08/dhcp.png)
 
  <a name="3"><a>
- ## 3.Card mang trên máy ảo.
+ ## 3.Card mạng trên máy ảo.
  
  -Khi bạn tạo một máy ảo mới, card mạng được tạo ra cho máy ảo, những card mạng này hiển thị trên hệ điều hành máy ảo với tên thiết bị như là AMD PCNET PCI hay Intel Pro/1000 MT Server Adapter. 
  
@@ -55,32 +53,25 @@
  - DHCP  server ảo cấp phát địa chỉ IP cho các máy ảo có kết nối với VMnet Host-only và NAT.
  
  ![](https://public.bn.files.1drv.com/y4peG36U7NACYoQN4xNa8kzMrs8IddLfNfvz2UdSTJHHBVKTU6BKRxxPVSnC7Cnt7UDzHkpZl9UvMhrWB8MaIHD6TBOg8RN2pLx4VHjEWiBB5Ded_l0xtyg8fS79vVg2zNvM0ANMy-VYTPy3ZiWx1c_52xtzenIt-8Jo2eg2vG0wIkfsj028wsldL02rRoEvXBT/dhcp.png?psid=1&rdrts=245380895)
-
- <a name="5"><a>
- ## 5.LAN Segment
- - Các card mạng của máy ảo có thể gắn kết với nhau thành từng LAN Segment.
- -Không giống như VMnet, LAN Segment chỉ kết nối các máy ảo được gán trong một LAN Segment lại với nhau mà không có những tính năng như   DHCP và LAN Segment không thể kết nối ra máy thật như các Virtual Switch VMnet.
- 
- ![](../image/lag/png)
- 
-  <a name="6"><a>
- ## 6.Các chế độ hoạt động khi cấu hình với switch ảo.
+  
+  <a name="5"><a>
+ ## 5.Các chế độ hoạt động khi cấu hình với switch ảo.
  
   <a name="6.1"><a>
- ## 6.1:Bridge
+ ## 5.1:Bridge
  - ở chế độ này, card mạng trên máy ảo được gắn vào VMnet0, VMnet0 này liên kết trực tiếp với card mạng vật lý trên máy thật, máy ảo lúc này sẽ kết nối internet thông qua  card mạng vật lý và có chung lớp mạng với card mạng vật lý.
  
  ![](https://public.bn.files.1drv.com/y4pmQpFGGVCkpAgVP5xikkW15KWQpyONPf7l0O_itJWG4UbMKa18Nw9xRNfTnMn2XcSremXKZrfeXBtheLOFqEF31S94Dsq5EqGm_2kPGu5b76_-znzI3zx4xOTbmDK13ZNX9Lt32UUCGy7rAGnPN4ps5Hm-lbnrjXpdxnIS-Oxh2a2Ytu646yWmOApe3qHMUgI/briged.png?psid=1&rdrts=245380896)
  
   <a name="6.2"><a>
- ## 6.2:NAT
+ ## 5.2:NAT
  
  - ở chế độ này, card mạng của máy ảo kết nối với VMnet8, VNnet8 cho phép máy ảo đi ra mạng vật lý bên ngoài internet thông qua cơ chế NAT
  - Lúc này lớp mạng bên trong máy ảo khác hoàn toàn với lớp mạng của card vật lý bên ngoài, hai mạng hoàn toàn tách biệt. IP của card mạng máy ảo sẽ được cấp bởi DHCP của VMnet8, trong trường hợp bạn muốn thiết lập IP tĩnh cho card mạng máy ảo bạn phải đảm bảo chung lớp mạng với VNnet8 thì máy ảo mới có thể đi internet.
  
   ![](https://public.bn.files.1drv.com/y4pYQJTxUDoHmUtDcRmE7WeQn95T_bhmWOwLBqM0BnTl8pqXumWY-xdWYptS0oyH7hi3V7AnuXUkKgAOicKdckGJjpc788DqRG5o8AlbyT2uPPXCF2asVSaknUQZLuj0xbEH1v31DI10r8ILkwWzKSvro5w_KKktEZVKg-bBNx9OJbF6sZjx3wS2n6IeU5AL31L/NAT.png?psid=1&rdrts=245380896)
   
-  ## 6.3:Host only
+  ## 5.3:Host only
   
   - máy ảo được kết nối với VMnet có tính năng Host-only, trong trường hợp này là VMnet1 . VNnet Host-only kết nối với  một card mạng ảo tương ứng ngoài máy thật. 
   
