@@ -43,3 +43,4 @@
 - [1]   http://planet.com.vn/hotro/kienthuc/dichvumang/snmp/mlnews.2010-06-25.9003750781/view
 - [2] http://www.netone.com.vn/Trangch%E1%BB%A7/H%E1%BB%97tr%E1%BB%A3k%E1%BB%B9thu%E1%BA%ADt/Ki%E1%BA%BFnth%E1%BB%A9cc%C4%83nb%E1%BA%A3n/tabid/366/arid/1119/Default.aspx
 - [3] https://vi.wikipedia.org/wiki/SNMP
+- [4] https://tailieu.vn/doc/chuong-4-cac-phien-ban-snmp-650319.html
