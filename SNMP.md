@@ -67,6 +67,7 @@
  
  # Bảo mật cho giao thức SNMP
  
+ - SMIv1 dùng phương thức xác thực đơn giản với `community `
  - `Community String`:Community string là một chuỗi ký tự được cài đặt giống nhau trên cả SNMP manager và SNMP agent, đóng vai trò như     “mật khẩu” giữa 2 bên khi trao đổi dữ liệu.
  - `Community string` có 3 loại: Read-community, Write-Community và Trap-Community.
  - Tác dụng của  Read-community:
@@ -79,7 +80,8 @@
    + Trap receiver chỉ nhận và lưu trữ bản tin trap chỉ khi trap-community 2 bên giống nhau
    + tuy nhiên cũng có nhiều trap receiver được cấu hình nhận tất cả bản tin trap mà không quan tâm đến trap-community.
  - Trên hầu hết hệ thống, read-community mặc định là “public”, write-community mặc định là “private” và trap-community mặc định là          “public”.
- 
+ - SNMPv2u : đây là phiên bản SNMPv2 sử dụng cơ chế bảo mật có chứng thực bằng băm1 và mã hóa đối xứng2 dữ liệu, gọi là User-based          SNMPv2 hay SNMPv2u.
+ -  SNMPv3 : phiên bản bảo mật nhất của SNMP sử dụng mô hình bảo mật dựa trên người dùng (User- based security model) với các cơ chế   chứng thực bằng băm (MD5, SHA) và mã hóa (DES, AES) hiện đại. 
   
    
 
@@ -88,3 +90,5 @@
 - [2] http://www.netone.com.vn/Trangch%E1%BB%A7/H%E1%BB%97tr%E1%BB%A3k%E1%BB%B9thu%E1%BA%ADt/Ki%E1%BA%BFnth%E1%BB%A9cc%C4%83nb%E1%BA%A3n/tabid/366/arid/1119/Default.aspx
 - [3] https://vi.wikipedia.org/wiki/SNMP
 - [4] https://tailieu.vn/doc/chuong-4-cac-phien-ban-snmp-650319.html
+- [5] https://hocday.com/manageengine-opmanager.html?page=5
+- [6] https://www.slideshare.net/phamhuynh50/giaiphapanninhtrongkientrucquantrimangsnmp
