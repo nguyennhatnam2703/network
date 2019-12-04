@@ -32,7 +32,6 @@
   |2|Dùng SMIv2. Loại bỏ việc sử dụng communities thêm vào các thông điệp Getbulk và Inform nhưng đã bắt đầu với phiên bản MIB-II|
   |2c|Phiên bản giả cho phép SNMPv1 giao tiếp với SNMPv2. Tương đương với SNMPv2|
   |3|Phần lớn tương tự như SNMPv2 nhưng thêm vào các tính năng bảo mật. Hỗ trợ tương thích ngược. Dùng MIB-II|
-  
 
 # Hoạt động của SNMP
 - ![]( /image/hdsnmp.jpg)
@@ -46,7 +45,28 @@
 - SNMP được thiết kế để có thể hoạt động độc lập với các kiến trúc và cơ chế của các thiết bị hỗ trợ SNMP.
   + Các thiết bị khác nhau có hoạt động khác nhau nhưng đáp ứng SNMP là giống nhau. 
   + Ví dụ bạn có thể dùng 1 phần mềm để theo dõi dung lượng ổ cứng còn trống của các máy chủ chạy HĐH Windows và Linux
+
+# Các thông điệp SNMP
+
+- |Messgae|Phiên bản ban đầu|Thông điệp trả lời|Thông điệp được gửi bởi|Mục đích chính|
+  |-------|-----------------|------------------|-----------------------|--------------|
+  |Get|1|Response|Manager|Yêu cầu giá trị của một biến|
+  |GetNext|1|Response|Manager|Yêu cầu cho giá trị MIB kế tiếp trong cây MIB|
+  |GetBulk|2|Response|Manager|Yêu cầu gửi nhiều biến MIB với chỉ một request. Hữu ích cho việc thu thập các thông tin có cấu trúc phức     tạp như bảng định tuyến IP|
+  |Response|1|None|Agent|Được dùng để trả lời cho thông tin trong các yêu cầu Get và Set|
+  |Set|1|Respose|Manager|Được gửi bởi một phần mềm manager đến agent để thiết lập một giá trị cho một biến. Agent sẽ trả lời bằng thông   điệp response|
+  |Trap|1|None|Agent|Cho phép các agents gửi các thông tin tự do đến một manager. Manager sẽ không trả lời với bất kỳ thông điệp SNMP     nào|
+  |Inform|2|Response|Manager|Một thông điệp được dùng giữa SNMP manger để cho phép dữ liệu MIB được trao đổi|
   
+ - Cả ba biến thể của thông điệp SNMP get message và thông điệp SNMP response thường được dùng khi ta chủ động dùng một SNMP manager:
+   + Khi một người dùng của SNMP hỏi thông tin, phần mềm manager sẽ gửi một trong ba kiểu lệnh get đến agent.
+   + Phía agent sẽ trả lời bằng thông điệp SNMP response.
+ - Lệnh SNMP set cho phép các phần mềm quản lý thay đổi một vài thứ trên agent.  
+ - SNMP trap là các thông điệp được gửi từ agent đến trạm quản trị. Ví dụ khi một cổng bị hỏng hóc, một agent của SNMP có thể gửi ra một   thông điệp trap đến SNMP manager.
+ - các thông điệp inform cho phép hai SNMP giao tiếp với nhau để trao đổi các thông tin MIB về các agents và cả hai cùng đang quản lý.
+  
+   
+
 # Tham khảo:
 - [1]   http://planet.com.vn/hotro/kienthuc/dichvumang/snmp/mlnews.2010-06-25.9003750781/view
 - [2] http://www.netone.com.vn/Trangch%E1%BB%A7/H%E1%BB%97tr%E1%BB%A3k%E1%BB%B9thu%E1%BA%ADt/Ki%E1%BA%BFnth%E1%BB%A9cc%C4%83nb%E1%BA%A3n/tabid/366/arid/1119/Default.aspx
