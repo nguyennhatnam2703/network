@@ -64,6 +64,22 @@
  - Lệnh SNMP set cho phép các phần mềm quản lý thay đổi một vài thứ trên agent.  
  - SNMP trap là các thông điệp được gửi từ agent đến trạm quản trị. Ví dụ khi một cổng bị hỏng hóc, một agent của SNMP có thể gửi ra một   thông điệp trap đến SNMP manager.
  - các thông điệp inform cho phép hai SNMP giao tiếp với nhau để trao đổi các thông tin MIB về các agents và cả hai cùng đang quản lý.
+ 
+ # Bảo mật cho giao thức SNMP
+ 
+ - `Community String`:Community string là một chuỗi ký tự được cài đặt giống nhau trên cả SNMP manager và SNMP agent, đóng vai trò như     “mật khẩu” giữa 2 bên khi trao đổi dữ liệu.
+ - `Community string` có 3 loại: Read-community, Write-Community và Trap-Community.
+ - Tác dụng của  Read-community:
+   + Khi manager gửi GetRequest, GetNextRequest đến agent thì trong bản tin gửi đi có chứa Read- Community
+   + Khi agent nhận được bản tin request thì nó sẽ so sánh Read-community mà manager gửi tới với Read-community mà agent được cài đặt.
+   Nếu hai chuỗi này giống nhau thì agent sẽ trả lời còn nếu khác thì agent sẽ không phải trả lời.  
+ - Tác dụng của Write-community:
+   + Write-Community được dùng trong bản tin SetRequest. Agent chỉ chấp nhận thay đổi dữ liệu khi write- community 2 bên giống nhau. 
+ - Trap-community nằm trong bản tin trap của trap sender gửi cho trap receiver:
+   + Trap receiver chỉ nhận và lưu trữ bản tin trap chỉ khi trap-community 2 bên giống nhau
+   + tuy nhiên cũng có nhiều trap receiver được cấu hình nhận tất cả bản tin trap mà không quan tâm đến trap-community.
+ - Trên hầu hết hệ thống, read-community mặc định là “public”, write-community mặc định là “private” và trap-community mặc định là          “public”.
+ 
   
    
 
