@@ -45,6 +45,11 @@
 - SNMP được thiết kế để có thể hoạt động độc lập với các kiến trúc và cơ chế của các thiết bị hỗ trợ SNMP.
   + Các thiết bị khác nhau có hoạt động khác nhau nhưng đáp ứng SNMP là giống nhau. 
   + Ví dụ bạn có thể dùng 1 phần mềm để theo dõi dung lượng ổ cứng còn trống của các máy chủ chạy HĐH Windows và Linux
+  
+# Nhược điểm của SNMP
+
+- Vì sử dụng giao thực UDP nên một yêu cầu từ manager có thể sẽ không đến đượu agent và hồi đáp của agent có thể không đến được manager
+  
 
 # Các thông điệp SNMP
 - ![]( /image/snmp.PNG)
