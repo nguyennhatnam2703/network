@@ -47,15 +47,16 @@
   + Ví dụ bạn có thể dùng 1 phần mềm để theo dõi dung lượng ổ cứng còn trống của các máy chủ chạy HĐH Windows và Linux
 
 # Các thông điệp SNMP
+- ![]( /image/snmp.PNG)
 
 - |Messgae|Phiên bản ban đầu|Thông điệp trả lời|Thông điệp được gửi bởi|Mục đích chính|
   |-------|-----------------|------------------|-----------------------|--------------|
-  |Get|1|Response|Manager|Yêu cầu giá trị của một biến|
-  |GetNext|1|Response|Manager|Yêu cầu cho giá trị MIB kế tiếp trong cây MIB|
+  |Get|1|Response|Manager|Lấy giá trị của một hoặc nhiều biến|
+  |GetNext|1|Response|Manager|Lấy giá trị của biến kế tiếp|
   |GetBulk|2|Response|Manager|Yêu cầu gửi nhiều biến MIB với chỉ một request. Hữu ích cho việc thu thập các thông tin có cấu trúc phức     tạp như bảng định tuyến IP|
   |Response|1|None|Agent|Được dùng để trả lời cho thông tin trong các yêu cầu Get và Set|
   |Set|1|Respose|Manager|Được gửi bởi một phần mềm manager đến agent để thiết lập một giá trị cho một biến. Agent sẽ trả lời bằng thông   điệp response|
-  |Trap|1|None|Agent|Cho phép các agents gửi các thông tin tự do đến một manager. Manager sẽ không trả lời với bất kỳ thông điệp SNMP     nào|
+  |Trap|1|None|Agent|Gửi cảnh báo cho manager khi có biến cố xảy trên máy agent  |
   |Inform|2|Response|Manager|Một thông điệp được dùng giữa SNMP manger để cho phép dữ liệu MIB được trao đổi|
   
  - Cả ba biến thể của thông điệp SNMP get message và thông điệp SNMP response thường được dùng khi ta chủ động dùng một SNMP manager:
