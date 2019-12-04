@@ -25,7 +25,7 @@
 - Hiện tại có 4 phiêm bản của SNMP: SNMPv1, SNMPv2c, SNMPv2u và SNMPv3. 
 - Các phiên bản khác nhau một chút ở phần định dạng bản tin và phương thức hoạt động
 - Hiện tại SNMPv1 là phổ biến nhất do có nhiều thiết bị tương thích nhất và có nhiều phần mềm hỗ trợ nhất.
-- sự khác nhau các phiên bản:
+- Các đặc điểm của các phiên bản:
 - |Phiên bản SNMP| Mô tả |
   |--------------|-------|
   |1|Dùng SMIv1 dùng phương thức xác thực đơn giản với community nhưng chỉ dùng MIB-I|
