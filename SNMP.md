@@ -25,9 +25,16 @@
 - Hiện tại có 4 phiêm bản của SNMP: SNMPv1, SNMPv2c, SNMPv2u và SNMPv3. 
 - Các phiên bản khác nhau một chút ở phần định dạng bản tin và phương thức hoạt động
 - Hiện tại SNMPv1 là phổ biến nhất do có nhiều thiết bị tương thích nhất và có nhiều phần mềm hỗ trợ nhất.
+- Các đặc điểm của các phiên bản:
+- |Phiên bản SNMP| Mô tả |
+  |--------------|-------|
+  |1|Dùng SMIv1 dùng phương thức xác thực đơn giản với community nhưng chỉ dùng MIB-I|
+  |2|Dùng SMIv2. Loại bỏ việc sử dụng communities thêm vào các thông điệp Getbulk và Inform nhưng đã bắt đầu với phiên bản MIB-II|
+  |2c|Phiên bản giả cho phép SNMPv1 giao tiếp với SNMPv2. Tương đương với SNMPv2|
+  |3|Phần lớn tương tự như SNMPv2 nhưng thêm vào các tính năng bảo mật. Hỗ trợ tương thích ngược. Dùng MIB-II|
 
 # Hoạt động của SNMP
-
+- ![]( /image/hdsnmp.jpg)
 - Các SNMP agent sẽ giữ một sơ sở dữ liệu, được gọi là Management Information Base (MIB), trong đó chứa các thông tin khác nhau về hoạt động của thiết bị mà 
   agent đang giám sát. Phần mềm quản trị SNMP Manager sẽ thu thập thông tin này qua giao thức SNMP.
   
@@ -38,8 +45,50 @@
 - SNMP được thiết kế để có thể hoạt động độc lập với các kiến trúc và cơ chế của các thiết bị hỗ trợ SNMP.
   + Các thiết bị khác nhau có hoạt động khác nhau nhưng đáp ứng SNMP là giống nhau. 
   + Ví dụ bạn có thể dùng 1 phần mềm để theo dõi dung lượng ổ cứng còn trống của các máy chủ chạy HĐH Windows và Linux
+
+# Các thông điệp SNMP
+
+- |Messgae|Phiên bản ban đầu|Thông điệp trả lời|Thông điệp được gửi bởi|Mục đích chính|
+  |-------|-----------------|------------------|-----------------------|--------------|
+  |Get|1|Response|Manager|Yêu cầu giá trị của một biến|
+  |GetNext|1|Response|Manager|Yêu cầu cho giá trị MIB kế tiếp trong cây MIB|
+  |GetBulk|2|Response|Manager|Yêu cầu gửi nhiều biến MIB với chỉ một request. Hữu ích cho việc thu thập các thông tin có cấu trúc phức     tạp như bảng định tuyến IP|
+  |Response|1|None|Agent|Được dùng để trả lời cho thông tin trong các yêu cầu Get và Set|
+  |Set|1|Respose|Manager|Được gửi bởi một phần mềm manager đến agent để thiết lập một giá trị cho một biến. Agent sẽ trả lời bằng thông   điệp response|
+  |Trap|1|None|Agent|Cho phép các agents gửi các thông tin tự do đến một manager. Manager sẽ không trả lời với bất kỳ thông điệp SNMP     nào|
+  |Inform|2|Response|Manager|Một thông điệp được dùng giữa SNMP manger để cho phép dữ liệu MIB được trao đổi|
   
+ - Cả ba biến thể của thông điệp SNMP get message và thông điệp SNMP response thường được dùng khi ta chủ động dùng một SNMP manager:
+   + Khi một người dùng của SNMP hỏi thông tin, phần mềm manager sẽ gửi một trong ba kiểu lệnh get đến agent.
+   + Phía agent sẽ trả lời bằng thông điệp SNMP response.
+ - Lệnh SNMP set cho phép các phần mềm quản lý thay đổi một vài thứ trên agent.  
+ - SNMP trap là các thông điệp được gửi từ agent đến trạm quản trị. Ví dụ khi một cổng bị hỏng hóc, một agent của SNMP có thể gửi ra một   thông điệp trap đến SNMP manager.
+ - các thông điệp inform cho phép hai SNMP giao tiếp với nhau để trao đổi các thông tin MIB về các agents và cả hai cùng đang quản lý.
+ 
+ # Bảo mật cho giao thức SNMP
+ 
+ - SMIv1 dùng phương thức xác thực đơn giản với `community `
+ - `Community String`:Community string là một chuỗi ký tự được cài đặt giống nhau trên cả SNMP manager và SNMP agent, đóng vai trò như     “mật khẩu” giữa 2 bên khi trao đổi dữ liệu.
+ - `Community string` có 3 loại: Read-community, Write-Community và Trap-Community.
+ - Tác dụng của  Read-community:
+   + Khi manager gửi GetRequest, GetNextRequest đến agent thì trong bản tin gửi đi có chứa Read- Community
+   + Khi agent nhận được bản tin request thì nó sẽ so sánh Read-community mà manager gửi tới với Read-community mà agent được cài đặt.
+   Nếu hai chuỗi này giống nhau thì agent sẽ trả lời còn nếu khác thì agent sẽ không phải trả lời.  
+ - Tác dụng của Write-community:
+   + Write-Community được dùng trong bản tin SetRequest. Agent chỉ chấp nhận thay đổi dữ liệu khi write- community 2 bên giống nhau. 
+ - Trap-community nằm trong bản tin trap của trap sender gửi cho trap receiver:
+   + Trap receiver chỉ nhận và lưu trữ bản tin trap chỉ khi trap-community 2 bên giống nhau
+   + tuy nhiên cũng có nhiều trap receiver được cấu hình nhận tất cả bản tin trap mà không quan tâm đến trap-community.
+ - Trên hầu hết hệ thống, read-community mặc định là “public”, write-community mặc định là “private” và trap-community mặc định là          “public”.
+ - SNMPv2u : đây là phiên bản SNMPv2 sử dụng cơ chế bảo mật có chứng thực bằng băm1 và mã hóa đối xứng2 dữ liệu, gọi là User-based          SNMPv2 hay SNMPv2u.
+ -  SNMPv3 : phiên bản bảo mật nhất của SNMP sử dụng mô hình bảo mật dựa trên người dùng (User- based security model) với các cơ chế   chứng thực bằng băm (MD5, SHA) và mã hóa (DES, AES) hiện đại. 
+  
+   
+
 # Tham khảo:
 - [1]   http://planet.com.vn/hotro/kienthuc/dichvumang/snmp/mlnews.2010-06-25.9003750781/view
 - [2] http://www.netone.com.vn/Trangch%E1%BB%A7/H%E1%BB%97tr%E1%BB%A3k%E1%BB%B9thu%E1%BA%ADt/Ki%E1%BA%BFnth%E1%BB%A9cc%C4%83nb%E1%BA%A3n/tabid/366/arid/1119/Default.aspx
 - [3] https://vi.wikipedia.org/wiki/SNMP
+- [4] https://tailieu.vn/doc/chuong-4-cac-phien-ban-snmp-650319.html
+- [5] https://hocday.com/manageengine-opmanager.html?page=5
+- [6] https://www.slideshare.net/phamhuynh50/giaiphapanninhtrongkientrucquantrimangsnmp
