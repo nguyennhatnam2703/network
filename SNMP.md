@@ -3,7 +3,7 @@
 # Khái niệm SNMP 
 
 - SNMP( simple network management protocol) là giao thức là giao thức quản lý mạng đơn giản
-- SNMP hoạt động ở lớp ứng dụng, chạy cổng 160, 161,162 trên UDP.
+- SNMP hoạt động ở lớp ứng dụng, chạy cổng  161(manager),162(agent) trên UDP.
 - SNMP là giao thức được sử dụng rất phổ biến để giám sát và điều khiển thiết bị mạng như switch, router, server ...
 - Ngoài ra SNMP còn cho phép quản lý các thiết bị mạng từ xa.
 - SNMP có khả năng theo dõi, lấy thông tin, đưa ra thông báo và tác động đến các hoạt động hệ thống mạng theo ý muốn của người quản trị
